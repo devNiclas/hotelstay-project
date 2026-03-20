@@ -8,6 +8,23 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <style>
+  body {
+    background-color: #0f172a;
+    color: #f8fafc; 
+  }
+
+  /* Gör korten lite ljusare än bakgrunden så de syns */
+  .card {
+    background-color: #1e293b;
+    color: white;
+    border: 1px solid #334155;
+  }
+
+  .text-secondary {
+    color: #94a3b8 !important;
+  }
+</style>
   </head>
   <body>
     <header>
@@ -22,9 +39,9 @@
 
     <main class="container my-5">
       <section id="rooms-selection">
-        <h1 class="text-center">Våra rum</h1>
+        <h1 class="text-center text-decoration-underline">Våra rum</h1>
         <div class="row g-4">
-          <div class="col-4">
+          <div class="col-md-6 col-lg-4">
             <div class="card h-100 shadow-sm">
               <img
                 src="assets/standard.png.png"
@@ -33,45 +50,81 @@
               />
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">Standard</h5>
-                <p card-text text-secondary>
+                <p class="card-text text-secondary">
                   Ett prisvärt och mysigt rum för den enkla vistelsen
                 </p>
                 <p class="fw-bold mt-auto">995 kr / natt</p>
                 <button
                   class="btn btn-primary w-100 mt-2"
-                  onclick="valjRum('Standard')"
+                  onclick="chooseRoom('Standard')"
                 >
                   Välj rum
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-md-6 col-lg-4">
             <div class="card h-100 shadow-sm border-primary">
                     <img src="assets/deluxe.png.png" class="card-img-top" alt="Deluxe rum">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Deluxe</h5>
                         <p class="card-text text-secondary">Extra utrymme, frukost på rummet och fantastisk utsikt.</p>
                         <p class="fw-bold mt-auto">1 895 kr / natt</p>
-                        <button class="btn btn-primary w-100 mt-2" onclick="valjRum('Deluxe')">Välj rum</button>
+                        <button class="btn btn-primary w-100 mt-2" onclick="chooseRoom('Deluxe')">Välj rum</button>
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="card h-100 shadow-sm">
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-warning">
                     <img src="assets/suite.png.png" class="card-img-top" alt="Svit">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Den stora sviten</h5>
                         <p class="card-text text-secondary">Vår lyxigaste upplevelse med egen jacuzzi och lounge.</p>
                         <p class="fw-bold mt-auto">3 495 kr / natt</p>
-                        <button class="btn btn-primary w-100 mt-2" onclick="valjRum('Svit')">Välj rum</button>
+                        <button class="btn btn-primary w-100 mt-2" onclick="chooseRoom('Svit')">Välj rum</button>
                     </div>
                 </div>
             </div>
         </div>
       </section>
 
-      <section id="booking-form-selection" class="d-none"></section>
+      <section id="booking-form-selection" class="d-none mt-5">
+        <div class="card p-4">
+            <h3>Boka <span id="room-chosen" class="text-primary"></span></h3>
+            <form id="booking-form">
+                <div class="mb-3">
+                    <label class="form-label">Ditt Namn</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Incheckningsdatum</label>
+                    <input type="date" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Utcheckningsdatum</label>
+                    <input type="date" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success">Bekräfta Bokning</button>
+            </form>
+        </div>
+    </section>
+    <section id="confirmation-msg" class="d-none text-center mt-5">
+        <div class="alert alert-success">
+            <h2 class="alert-heading">Tack för din bokning!</h2>
+            <p>Din bokning är bekräftad. Välkommen till STAY.</p>
+        </div>
+    </section>  
     </main>
-  </body>
+
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <p>&copy; 2026 STAY. Hotellgruppen</p>
+        </div>
+    </footer>
+
+
+
+  <script src="app.js"></script>
+</body>
+
 </html>
